@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './models/Tarefa.dart';
 import './components/lista_tarefas.dart';
+import 'dart:math';
+import './components/form_tarefas.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,67 +47,52 @@ class _MyHomePageState extends State<MyHomePage> {
       desc: "Pagar a Conta de Luz",
       data: DateTime.now(),
     ),
-    Tarefa(
-      id: 1,
-      desc: "Ir no Mercado",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 2,
-      desc: "Pagar a Conta de Luz",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 1,
-      desc: "Ir no Mercado",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 2,
-      desc: "Pagar a Conta de Luz",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 1,
-      desc: "Ir no Mercado",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 2,
-      desc: "Pagar a Conta de Luz",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 1,
-      desc: "Ir no Mercado",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 2,
-      desc: "Pagar a Conta de Luz",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 1,
-      desc: "Ir no Mercado",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 2,
-      desc: "Pagar a Conta de Luz",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 1,
-      desc: "Ir no Mercado",
-      data: DateTime.now(),
-    ),
-    Tarefa(
-      id: 2,
-      desc: "Pagar a Conta de Luz",
-      data: DateTime.now(),
-    ),
   ];
+
+  _addTarefa(String desc) {
+    final novaTarefa = Tarefa(
+        id: Random().nextDouble().toInt(), desc: desc, data: DateTime.now());
+
+    setState(() {
+      _tarefas.add(novaTarefa);
+    });
+
+    Navigator.of(context).pop();
+
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            backgroundColor: Colors.green,
+            contentTextStyle: const TextStyle(
+              color: Colors.white,
+            ),
+            titleTextStyle: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+            title: const Text("Aviso"),
+            content: const Text("Tarefa inserida com sucesso!"),
+            actions: [
+              TextButton(
+                child: const Text("OK"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                style: TextButton.styleFrom(foregroundColor: Colors.white),
+              )
+            ],
+          );
+        });
+  }
+
+  _abrirModalFormTarefa(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return TarefaForm(_addTarefa);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => _abrirModalFormTarefa(context),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
