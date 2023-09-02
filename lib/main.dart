@@ -37,12 +37,72 @@ class _MyHomePageState extends State<MyHomePage> {
   final _tarefas = [
     Tarefa(
       id: 1,
-      desc: "Novo Tenis de corrida",
+      desc: "Ir no Mercado",
       data: DateTime.now(),
     ),
     Tarefa(
       id: 2,
-      desc: "Conta de Luz",
+      desc: "Pagar a Conta de Luz",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 1,
+      desc: "Ir no Mercado",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 2,
+      desc: "Pagar a Conta de Luz",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 1,
+      desc: "Ir no Mercado",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 2,
+      desc: "Pagar a Conta de Luz",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 1,
+      desc: "Ir no Mercado",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 2,
+      desc: "Pagar a Conta de Luz",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 1,
+      desc: "Ir no Mercado",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 2,
+      desc: "Pagar a Conta de Luz",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 1,
+      desc: "Ir no Mercado",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 2,
+      desc: "Pagar a Conta de Luz",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 1,
+      desc: "Ir no Mercado",
+      data: DateTime.now(),
+    ),
+    Tarefa(
+      id: 2,
+      desc: "Pagar a Conta de Luz",
       data: DateTime.now(),
     ),
   ];

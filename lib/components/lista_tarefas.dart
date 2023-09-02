@@ -10,45 +10,43 @@ class ListaTarefas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 600,
+      height: 680,
       child: ListView.builder(
         itemCount: tarefas.length,
         itemBuilder: (ctx, index) {
           final tr = tarefas[index];
-          return Card(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.purple, width: 2),
-                      borderRadius: BorderRadius.circular(50)),
-                  padding: const EdgeInsets.all(10),
-                  child: Text(
-                    tr.desc,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.purple,
+          return Padding(
+            padding: EdgeInsets.fromLTRB(15, 15, 15, 0),
+            child: Card(
+              color: Colors.amber,
+              margin: const EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(tr.desc,
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold)),
+                        Text(
+                          DateFormat("dd/MM/y HH:MM").format(tr.data),
+                          style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                        ),
+                      ],
                     ),
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(tr.desc,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold)),
-                    Text(
-                      DateFormat("d MMM y").format(tr.data),
-                      style: const TextStyle(color: Colors.grey),
-                    ),
-                  ],
-                )
-              ],
+                  Checkbox(
+                    checkColor: Colors.blue,
+                    value: true,
+                    onChanged:(value) => {},
+                  ),
+                ],
+              ),
             ),
           );
         },
