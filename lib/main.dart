@@ -3,6 +3,7 @@ import './models/Tarefa.dart';
 import './components/lista_tarefas.dart';
 import 'dart:math';
 import './components/form_tarefas.dart';
+import 'components/form_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -94,6 +95,15 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  _abrirModalForm(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return FormDemo();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Lista de Tarefas"),
         actions: [
           IconButton(
-            onPressed: () => {},
+            onPressed: () => _abrirModalForm(context),
             icon: Icon(Icons.account_box_outlined),
           )
         ],
@@ -111,11 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              width: double.infinity,
-              child:
-                  Card(color: Colors.blue, child: Text("TESTE"), elevation: 5),
-            ),
             ListaTarefas(_tarefas),
           ],
         ),
